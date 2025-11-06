@@ -1,0 +1,29 @@
+// =======
+// x1 = fib (x0)
+// =======
+MOV X0 11
+
+//fib(0) = 0,(1) = 1
+CMP X0 2
+BLT BASE_CASE
+
+MOV X2 0 //a
+MOV X3 1 //b
+MOV X4 2 //i
+
+loop:
+   
+    ADD X5 X2 X3 //next = a + b
+    MOV X2 X3    // a = b
+    MOV X3 X5       // b = next
+    ADD X4 1 
+
+    CMP X4 X0
+    BLE loop
+
+MOV X1 X3
+EXIT
+
+BASE_CASE:
+MOV X1 X0
+EXIT
