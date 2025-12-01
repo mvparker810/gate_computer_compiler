@@ -1,0 +1,43 @@
+// Print "hello, world!"
+// Format: PRINT [ADDRESS] [CODE]
+
+MOV X0 0x0068      // 'h'
+PRINT 0x0000, X0   // Address 0
+
+MOV X0 0x0065      // 'e'
+PRINT 0x0001, X0   // Address 1
+
+MOV X0 0x006C      // 'l'
+PRINT 0x0002, X0   // Address 2
+
+MOV X0 0x006C      // 'l'
+PRINT 0x0003, X0   // Address 3
+
+MOV X0 0x006F      // 'o'
+PRINT 0x0004, X0   // Address 4
+
+MOV X0 0x002C      // ','
+PRINT 0x0005, X0   // Address 5
+
+MOV X0 0x0020      // ' ' (space)
+PRINT 0x0006, X0   // Address 6
+
+MOV X0 0x0077      // 'w'
+PRINT 0x0007, X0   // Address 7
+
+MOV X0 0x006F      // 'o'
+PRINT 0x0008, X0   // Address 8
+
+MOV X0 0x0072      // 'r'
+PRINT 0x0009, X0   // Address 9
+
+MOV X0 0x006C      // 'l'
+PRINT 0x000A, X0   // Address 10
+
+MOV X0 0x0064      // 'd'
+PRINT 0x000B, X0   // Address 11
+
+MOV X0 0x0021      // '!'
+PRINT 0x000C, X0   // Address 12
+
+EXIT

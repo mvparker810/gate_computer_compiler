@@ -1,0 +1,66 @@
+// Fibonacci Program
+// Input: X0 = n (which Fibonacci number to calculate)
+// Output: X1 = Fibonacci(n)
+// Displays result on screen
+
+// Initialize for Fibonacci calculation
+MOV X1 0x0000       // X1 = fib(0) = 0
+MOV X2 0x0001       // X2 = fib(1) = 1
+MOV X3 0x0001       // X3 = loop counter (starts at 1)
+
+// Print header
+PRINT 0x0000, 'F'   // Position 0
+PRINT 0x0001, 'i'   // Position 1
+PRINT 0x0002, 'b'   // Position 2
+PRINT 0x0003, '='   // Position 3
+
+// Main loop: calculate Fibonacci(n)
+fib_loop:
+CMP X3 X0           // Compare counter with n
+BGT fib_done        // If counter > n, exit loop
+
+// Calculate next Fibonacci number: fib(i) = fib(i-1) + fib(i-2)
+ADD X5 X1 X2        // X5 = X1 + X2
+
+// Shift values for next iteration
+MOV X1 X2           // X1 = X2 (old fib(i-1) becomes fib(i-2))
+MOV X2 X5           // X2 = X5 (new fib(i) becomes fib(i-1))
+
+// Increment loop counter
+ADD X3 X3 0x0001    // X3++
+
+B fib_loop          // Jump back to loop
+
+// Result is now in X1
+fib_done:
+PRINT 0x0004, 'D'   // Position 4: Done indicator
+PRINT 0x0005, 'o'   // Position 5
+PRINT 0x0006, 'n'   // Position 6
+PRINT 0x0007, 'e'   // Position 7
+
+EXIT
+
+/*
+Expected behavior:
+This program calculates the Nth Fibonacci number where N is provided in X0.
+
+Examples:
+- If X0 = 0: X1 = 0 (Fibonacci(0) = 0)
+- If X0 = 1: X1 = 1 (Fibonacci(1) = 1)
+- If X0 = 5: X1 = 5 (Fibonacci(5) = 0,1,1,2,3,5)
+- If X0 = 6: X1 = 8 (Fibonacci(6) = 0,1,1,2,3,5,8)
+- If X0 = 10: X1 = 55 (Fibonacci(10) = 55)
+
+Algorithm:
+1. Initialize fib(0)=0 in X1, fib(1)=1 in X2
+2. Loop from i=1 to n:
+   - Calculate next = fib(i-1) + fib(i-2)
+   - Shift: fib(i-2) = fib(i-1), fib(i-1) = next
+   - Increment counter
+3. Result is in X1
+
+Screen output:
+Position 0-2: "Fib"
+Position 3: "="
+Position 4-7: "Done"
+*/

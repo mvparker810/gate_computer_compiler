@@ -1,0 +1,41 @@
+// Print "HeLlo" using unified PRINT instruction
+// Format: PRINT [ADDRESS] [CODE]
+// Assembler automatically selects the correct variant based on arguments
+
+MOV X0 0x0048      // X0 = 'H' (0x0048)
+MOV X1 0x0000      // X1 = address 0 (0x0000)
+PRINT X1, X0        // PRINT_REG: address in X1, code in X0
+
+MOV X2 0x0065      // X2 = 'e' (0x0065)
+PRINT 0x0001, X2    // PRINT_REG_I: immediate address 1 (0x0001), code in X2
+
+MOV X3 0x004C      // X3 = 'L' (0x004C)
+MOV X4 0x0002      // X4 = address 2 (0x0002)
+PRINT X4, X3        // PRINT_REG: address in X4, code in X3
+
+PRINT 0x0003, 0x006C        // PRINT_CONST_I: immediate address 3 (0x0003), code constant 'l' (0x006C)
+
+MOV X5 0x006F      // X5 = 'o' (0x006F)
+MOV X6 0x0004      // X6 = address 4 (0x0004)
+PRINT X6, X5        // PRINT_REG: address in X6, code in X5
+
+EXIT
+
+/*
+Expected screen output:
+HeLlo
+
+This program demonstrates the unified PRINT instruction.
+The assembler automatically determines which variant to use:
+- PRINT Rx, Ry    -> PRINT_REG (0x2A)
+- PRINT imm, Rx   -> PRINT_REG_I (0x2B)
+- PRINT Rx, const -> PRINT_CONST (0x2C)
+- PRINT imm, const -> PRINT_CONST_I (0x2D)
+
+Hex constants used:
+- H = 0x0048
+- e = 0x0065
+- L = 0x004C
+- l = 0x006C
+- o = 0x006F
+*/
