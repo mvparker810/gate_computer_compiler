@@ -1,0 +1,31 @@
+MOV X0 0x03
+MOV X1 0x05
+MOV X2 0x08
+MOV X3 0x0D
+MOV X4 0x15
+MOV X5 0x22
+MOV X6 0x37
+MOV X7 0x59
+
+MOV X3 X0        // X3 = 0x03
+MOV X6 X2        // X6 = 0x08
+MOV X1 X7        // X1 = 0x59
+MOV X5 X4        // X5 = 0x15
+MOV X7 X1        // X7 = 0x59
+MOV X0 X6        // X0 = 0x08
+MOV X2 X5        // X2 = 0x15
+MOV X4 X3        // X4 = 0x03
+
+EXIT
+
+/*
+expected
+X0 = 0x08
+X1 = 0x59
+X2 = 0x15
+X3 = 0x03
+X4 = 0x03
+X5 = 0x15
+X6 = 0x08
+X7 = 0x59
+*/

@@ -1,0 +1,25 @@
+
+//SCREEN[REG] = REG
+MOV X0 0x0048 
+MOV X1 0x0000  
+PRINT X1 X0 
+
+//SCREEN[CONST] = REG
+MOV X2 0x0065   
+PRINT 0x0001 X2  
+
+//SCREEN[REG] = CONST
+MOV X4 0x0002 
+PRINT X4 0x004C
+
+//SCREEN[CONST] = CONST
+PRINT 3, 'O'   
+
+EXIT
+
+/*
+Expected screen output:
+HeLO
+
+
+*/

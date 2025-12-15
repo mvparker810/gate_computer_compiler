@@ -1,0 +1,12 @@
+MOV X7 0xFF
+
+MOV X0 0xABCD
+MOV X1 0x1234
+
+WRITE X0 0x00     // MEM[0X00] = X0
+READ  X2 0x00     // X2 = MEM[0X00]
+
+WRITE X2 X7         // MEM[X7] = X2
+READ X3 X7          // X3 = MEM[X7]
+
+EXIT

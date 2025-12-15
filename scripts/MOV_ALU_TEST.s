@@ -1,0 +1,13 @@
+MOV X0 0xABCD     // X0 = 43981
+MOV X1 0x5432     // X1 = 21554
+MOV X2 0xFFFF     // X2 = 65535 
+ADD X3 X0 X1      // X3 = 0xABCD + 0x5432 = 0xFFFF
+ADD X4 X3 X2      // X4 = 0xFFFF + 0xFFFF = 0x1FFFE
+MOV X5 0x8000     // X5 = 32768
+ADD X6 X5 X5      // X6 = 0x8000 + 0x8000 = 0x10000
+MOV X7 X6         // X7 = X6 = 0x0000
+EXIT
+// X0: 0xABCD  X1: 0x5432
+// X2: 0xFFFF  X3: 0xFFFF
+// X4: 0xFFFE  X5: 0x8000
+// X6: 0x0000  X7: 0x0000
